@@ -8,4 +8,8 @@ class ProcesadorSenal:
         resultadoFiltroDerivativo = Filtro.derivativo(resultadoFiltro)
         resultadoAlisado = Filtro.alisado(resultadoFiltroDerivativo)
         resultadoMediaMovil = Filtro.mediaMovil(resultadoAlisado)
+        
+        # Llamada para graficar el espectrograma
+        Graficador.graficarEspectrograma(amplitudes, fs, title)
+
         return Graficador.graficarResultados(muestra, amplitudes, resultadoFiltro, resultadoFiltroDerivativo, resultadoAlisado, resultadoMediaMovil, title)

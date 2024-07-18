@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+from scipy.signal import spectrogram
 
 class Graficador:
     @staticmethod
@@ -70,3 +71,15 @@ class Graficador:
     @staticmethod
     def graficarMediaMovil(cantidadMuestras, muestra2, resultadoMediaMovil, title):
         Graficador.graficar(5, muestra2, resultadoMediaMovil, "Media móvil", min(resultadoMediaMovil) - 0.001, (max(resultadoMediaMovil) + 0.001), cantidadMuestras, "Número muestras [n]", "Amplitud [mV]", title)
+
+    @staticmethod
+    def graficarEspectrograma(signal, fs, title):
+        signal = np.array(signal)  # Convertir la señal a un array de NumPy
+        f, t, Sxx = spectrogram(signal, fs)
+        plt.figure(figsize=(10, 6))
+        plt.pcolormesh(t, f, 10 * np.log10(Sxx), shading='gouraud')
+        plt.ylabel('Frecuencia [Hz]')
+        plt.xlabel('Tiempo [s]')
+        plt.title(f'Espectrograma de {title}')
+        plt.colorbar(label='Intensidad [dB]')
+        plt.show()

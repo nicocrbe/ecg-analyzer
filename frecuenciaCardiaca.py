@@ -20,7 +20,7 @@ class FrecuenciaCardiaca:
                 frecuenciaCardiaca.append(fs * 60 / (input[i + 1] - input[i]))
         
         x = [i for i in range(len(frecuenciaCardiaca))]
-        Graficador.graficar(6, x, frecuenciaCardiaca, "Frecuencia cardíaca latido por latido", 30, 200, len(frecuenciaCardiaca), "N° latido", "Frecuencia [lat/min]", title)
+        Graficador.graficar(6, x, frecuenciaCardiaca, "Frecuencia cardíaca vs. latidos", 30, 200, len(frecuenciaCardiaca), "N° latidos", "Frecuencia [lat/min]", title)
 
         plt.plot([0, len(frecuenciaCardiaca)], [limiteInferior, limiteInferior], 'r')
         plt.plot([0, len(frecuenciaCardiaca)], [limiteSuperior, limiteSuperior], 'r')
